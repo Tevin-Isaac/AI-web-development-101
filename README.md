@@ -1,5 +1,5 @@
 
-# Study Buddy App
+# Study Buddy AI 
 
 Study Buddy is an AI-powered education app that provides step-by-step answers to academic questions across various subjects. Whether you need help with Math, Science, Languages, Literature, History, or more, Study Buddy has got you covered!
 
