@@ -1,4 +1,3 @@
-Sure, here's a sample description for your Study Buddy app that you can include in your README.md file:
 
 # Study Buddy App
 
