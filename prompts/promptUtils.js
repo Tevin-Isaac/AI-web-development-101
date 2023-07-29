@@ -1,36 +1,62 @@
-// file: /prompts/promptUtils.js
+// file: prompts/promptUtils.js
+
+/**
+ * Get the system prompt for Study Buddy.
+ * @returns {object} The system prompt object.
+ */
 export function getSystemPrompt() {
   return {
     role: "system",
-    content: "You are a helpful assistant that specializes in generating creative pet names.",
+    content: "You are a knowledgeable study buddy, ready to assist with your academic questions.",
   };
 }
 
-export function getUserPrompt(input) {
+/**
+ * Get the user prompt for Study Buddy.
+ * @param {string} subject - The academic subject of the question.
+ * @param {string} question - The academic question or problem.
+ * @returns {object} The user prompt object.
+ */
+export function getUserPrompt(subject, question) {
   return {
     role: "user",
-    content: `Generate a creative pet name and short description for a ${input}.`,
+    content: `I need help with my ${subject} question: ${question}.`,
   };
 }
 
+/**
+ * Get the functions for Study Buddy API.
+ * @returns {Array} An array containing the function objects.
+ */
 export function getFunctions() {
   return [
     {
-      name: "generate_pet_name",
-      description: "Generate a pet name for an animal.",
+      name: "answer_academic_question",
+      description: "Provide step-by-step answers for academic questions.",
       parameters: {
         type: "object",
         properties: {
-          animalPetName: {
+          subject: {
             type: "string",
-            description: "The generated pet name for the animal",
+            description: "The academic subject of the question",
           },
-          description: {
+          question: {
             type: "string",
-            description: "The generated explanation of the pet name",
+            description: "The academic question or problem",
+          },
+          answer: {
+            type: "string",
+            description: "The generated answer for the academic question",
+          },
+          instructions: {
+            type: "array",
+            description: "An array of strings representing step-by-step instructions for solving the academic question",
+            items: {
+              type: "string",
+            },
           },
         },
-        "required": ["animalPetName", "description"]
+        required: ["subject", "question", "answer", "instructions"],
       },
     },
   ];

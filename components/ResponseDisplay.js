@@ -1,5 +1,8 @@
 // file: /components/ResponseDisplay.js
+import React from "react";
+
 const ResponseDisplay = ({ data, error, loading }) => {
+  console.log("data in ResponseDisplay", data);
   let content;
 
   if (loading) {
@@ -7,14 +10,29 @@ const ResponseDisplay = ({ data, error, loading }) => {
   } else if (error) {
     content = `Error: ${error.message}`;
   } else if (data) {
-    console.log("Data from OpenAI API in display: ", data.result);
-
-    content = (
-      <>
-        <p>Name: {data.result.animalPetName}</p>
-        <p>Description: {data.result.description}</p>
-      </>
-    );
+    if (data.result.instructions && Array.isArray(data.result.instructions)) {
+      content = (
+        <>
+          <p>Name: {data.result.subject}</p>
+          <p>Question: {data.result.question}</p>
+          <p>Answer: {data.result.answer}</p>
+          <p>Instructions:</p>
+          <ol>
+            {data.result.instructions.map((step, index) => (
+              <li key={index}>{step}</li>
+            ))}
+          </ol>
+        </>
+      );
+    } else {
+      content = (
+        <>
+          <p>Name: {data.result.subject}</p>
+          <p>Question: {data.result.question}</p>
+          <p>Answer: {data.result.answer}</p>
+        </>
+      );
+    }
   } else {
     content = "";
   }

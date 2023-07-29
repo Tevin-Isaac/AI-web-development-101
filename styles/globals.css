@@ -1,32 +1,54 @@
 /* // file: styles/globals.css */
-body {
-  font-family: 'Inter', sans-serif;
+
+/* Reset default styles */
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* Apply Inter font-family to the entire app */
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f9f9f9;
+}
+
+/* Set a container with max width and center it on the page */
 .container {
   max-width: 800px;
   margin: 0 auto;
   padding: 2rem;
+  background-color: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Style the TextInput component */
 .text-input {
   width: 100%;
-  padding: 0.5rem;
+  padding: 0.75rem;
   font-size: 1rem;
-  border: 1px solid #ccc;
+  border: 2px solid #ccc;
   border-radius: 4px;
+  outline: none;
+  transition: border-color 0.3s;
 }
 
+.text-input::placeholder {
+  color: #999;
+}
+
+.text-input:focus {
+  border-color: #1a73e8;
+}
+
+/* Style the SubmitButton component */
 .submit-button {
   display: inline-block;
   margin: 1rem 0;
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1rem;
   font-size: 1rem;
   color: white;
-  background-color: #0070f3;
+  background-color: #1a73e8;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -34,10 +56,53 @@ body {
 }
 
 .submit-button:hover {
-  background-color: #0051cc;
+  background-color: #0d47a1;
 }
 
+/* Style the ResponseDisplay component */
 .response-display {
   margin-top: 1rem;
-  padding: 0.5rem;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f3f3f3;
+}
+
+/* Style the DropdownSelect component */
+.select {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  appearance: none;
+  background: url('/dropdown-arrow.svg') no-repeat right 0.75rem center;
+  background-size: 12px;
+  color: #555;
+}
+
+.select option {
+  color: #555;
+}
+
+.select:focus {
+  border-color: #1a73e8;
+}
+
+/* Styling for the main app heading */
+.header {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #1a73e8;
+}
+
+/* Styling for the description text */
+.description {
+  font-size: 1.1rem;
+  max-width: 500px;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #666;
 }

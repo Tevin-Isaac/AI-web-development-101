@@ -1,95 +1,77 @@
-# Next.js OpenAI Boilerplate
+Sure, here's a sample description for your Study Buddy app that you can include in your README.md file:
 
-This is a simplified yet effective Next.js boilerplate project that showcases how to integrate the OpenAI API within a Next.js application. The boilerplate incorporates a user-friendly interface for submitting prompts and rendering the response from the OpenAI API.
+# Study Buddy App
+
+Study Buddy is an AI-powered education app that provides step-by-step answers to academic questions across various subjects. Whether you need help with Math, Science, Languages, Literature, History, or more, Study Buddy has got you covered!
 
 ## Features
 
--   Well-structured Next.js configuration with a minimalistic user interface.
--   Flexibly customizable prompts in a dedicated folder.
--   Utilizes OpenAI's GPT-3.5 Turbo model for chat completion (Model Version: gpt-3.5-turbo-0613).
--   Function calling mechanism included to create meaningful interactions with the AI model.
--   In-built error handling and management of loading states.
+- Ask Academic Questions: Input your subject and question, and Study Buddy will use advanced AI algorithms to provide detailed and comprehensive answers.
+
+- Subject Selection: Choose from a list of subjects, making it easier for Study Buddy to tailor its responses to your specific area of study.
 
 ## Getting Started
 
-### Prerequisites
+To run the Study Buddy app locally, follow these steps:
 
-Ensure the following are installed on your machine:
+1. Clone this repository to your local machine.
 
--   [Node.js](https://nodejs.org/en/download/) (Version 12 or higher)
--   [npm](https://www.npmjs.com/get-npm) (generally bundled with Node.js) or [Yarn](https://yarnpkg.com/getting-started/install)
+2. Install the required dependencies using npm or yarn:
 
-### Installation
-
-1.  Clone this repository:
-
-    `git clone https://github.com/your-username/nextjs-openai-boilerplate.git`
-
-2.  Move to the project directory:
-
-    `cd nextjs-openai-boilerplate`
-
-3.  Install dependencies:
-
-    `npm install`
-
-    or
-
-    `yarn install`
-
-4.  Create a `.env.local` file in the root directory of the project and include your OpenAI API key:
-
-    `OPENAI_API_KEY=your_openai_api_key`
-
-    Substitute `your_openai_api_key` with your actual OpenAI API key. Your API key can be located in your [OpenAI Dashboard](https://platform.openai.com/account/api-keys).
-
-5.  Kick start the development server:
-
-    `npm run dev`
-
-    or
-
-    `yarn dev`
-
-6.  Access the application by navigating to [http://localhost:3000](http://localhost:3000/). The boilerplate application should be live now.
-
-OpenAI API: Generating Chat Completions
----------------------------------------
-
-The `openai.createChatCompletion()` function is an essential part of the OpenAI API, which enables developers to generate text utilizing machine learning models. Specifically, `createChatCompletion()` caters to the generation of completions for chat-oriented models, such as the GPT-3.5-turbo model (version gpt-3.5-turbo-0613), aimed at generating responses in a conversational format.
-
-### Usage
-
-```javascript
-const completion = await openai.createChatCompletion({
-  model: "gpt-3.5-turbo-0613",
-  messages: messages,
-  functions: functions,
-  temperature: 0,
-  max_tokens: 510,
-  top_p: 0,
-});
+```bash
+npm install
 ```
 
-### Parameters
+or
 
-> model: (string, required) - Indicates the name of the model to be utilized for generating completions. "gpt-3.5-turbo-0613" is used in this example, which is a chat-based language model.
+```bash
+yarn install
+```
 
-> messages: (array of objects, required) - Indicates an array of message objects. Each object consists of a role ("system", "user", or "assistant") and content (the actual message text). Messages are processed in the order they appear in the array, and the assistant generates the response accordingly.
+3. Obtain OpenAI API Key:
 
-> functions: (array of objects, required) - Specifies an array of function objects that represent the assistant's capabilities.
+   - Sign up for an account on OpenAI's website (https://openai.com) and obtain your API key.
+   - Create a `.env` file in the root directory of the project.
+   - Add your OpenAI API key to the `.env` file like this:
 
-> temperature: (number, optional) - Determines the randomness of the generated completions. A higher value (e.g., 0.8) will produce more random outputs, while a lower value (e.g., 0.2) will make the outputs more deterministic.
+   ```
+   OPENAI_API_KEY=YOUR_API_KEY_HERE
+   ```
 
-> max_tokens: (number, optional) - Determines the maximum length of the generated completion. If the limit is exceeded, the additional tokens will be discarded. However, bear in mind that very long outputs may require more time to process.
+   Note: Make sure to keep your API key secure and do not share it publicly.
 
-> top_p: (number, optional) - This parameter is a part of nucleus sampling, a decoding method used in language models. It determines the minimum number of tokens to consider for generating a completion. A higher value will consider more tokens, increasing the randomness.
+4. Start the development server:
+
+```bash
+npm run dev
+```
+
+or
+
+```bash
+yarn dev
+```
+
+5. Visit `http://localhost:3000` in your web browser to access the Study Buddy app.
+
+## Environment Variables
+
+The Study Buddy app uses the following environment variable:
+
+- `OPENAI_API_KEY`: Your OpenAI API key for accessing the AI-powered capabilities of the app. Make sure to keep it secure and don't share it publicly.
+
+## Styling and Customization
+
+Feel free to customize the app's appearance and styling to match your preferences. You can modify the `global.css` file in the `styles` directory to change colors, fonts, and more.
 
 ## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Contributions to the Study Buddy app are welcome! If you find any bugs or have suggestions for new features, please open an issue or submit a pull request.
 
 ## License
-This project is licensed under the MIT License.
 
-## Disclaimer
-The use of the OpenAI API and the output it generates depends on the usage policies set by OpenAI. Make sure to review the OpenAI use case policy before using this boilerplate to build applications.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+You can copy and paste the above description into your README.md file and make any necessary adjustments or additions based on your specific implementation and project details. Make sure to include information on how to use the app, how to set up the environment with the OpenAI API key, and any other relevant instructions for users and developers.
