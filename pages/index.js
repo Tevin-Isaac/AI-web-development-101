@@ -12,14 +12,29 @@ const inter = Inter({ subsets: ['latin'] });
 export default function Home() {
   const [subject, setSubject] = useState('');
   const [question, setQuestion] = useState('');
-  const { data, error, loading } = useApi('/api/openai', 'POST', {
-    subject,
-    question,
-  });
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const fetchApiResponse = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      const response = await useApi('/api/openai', 'POST', {
+        subject,
+        question,
+      });
+      setData(response);
+      setLoading(false);
+    } catch (error) {
+      setError('An error occurred while fetching data.');
+      setLoading(false);
+    }
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setSubmitValue(getUserPrompt(subject, question));
+    fetchApiResponse();
   };
 
   const handleSubjectChange = (event) => {
@@ -124,7 +139,7 @@ export default function Home() {
       <main className={`container ${inter.className}`}>
         <h1 className={`header ${inter.className}`}>Study Buddy</h1>
         <img
-          src="https://c4.wallpaperflare.com/wallpaper/888/401/127/ai-art-gamer-computer-pc-gaming-hd-wallpaper-preview.jpg" // Replace this URL with your image URL
+          src="https://c4.wallpaperflare.com/wallpaper/468/233/295/ai-artificial-intelligence-art-wallpaper-preview.jpg" // Replace this URL with your image URL
           alt="Study Buddy AI"
           className="study-buddy-image"
         />
