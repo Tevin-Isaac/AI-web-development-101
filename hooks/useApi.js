@@ -39,10 +39,6 @@ const useApi = () => {
     }
   }, []);
 
-  // if (payload) {
-  //   fetchData(); // Call fetchData only if payload is provided
-  // }
-
   // Return the data, error, and loading states from the hook
   return { fetchData, loading, error, data };
 };
