@@ -1,40 +1,24 @@
-import Head from 'next/head';
-import { Inter } from 'next/font/google';
-import { useState } from 'react';
-import TextInput from '../components/TextInput';
-import SubmitButton from '../components/SubmitButton';
-import ResponseDisplay from '../components/ResponseDisplay';
-import { getUserPrompt } from '../prompts/promptUtils';
-import useApi from '../hooks/useApi';
+import Head from "next/head";
+import { Inter } from "next/font/google";
+import { useState } from "react";
+import TextInput from "../components/TextInput";
+import SubmitButton from "../components/SubmitButton";
+import ResponseDisplay from "../components/ResponseDisplay";
+import useApi from "../hooks/useApi";
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  const [subject, setSubject] = useState('');
-  const [question, setQuestion] = useState('');
-  const [data, setData] = useState(null);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [subject, setSubject] = useState("");
+  const [question, setQuestion] = useState("");
+  const { fetchData, loading, error, data } = useApi();
 
-  const fetchApiResponse = async () => {
-    try {
-      setLoading(true);
-      setError(null);
-      const response = await useApi('/api/openai', 'POST', {
-        subject,
-        question,
-      });
-      setData(response);
-      setLoading(false);
-    } catch (error) {
-      setError('An error occurred while fetching data.');
-      setLoading(false);
-    }
-  };
-
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    fetchApiResponse();
+    await fetchData("/api/openai", "POST", {
+      subject,
+      question,
+    });
   };
 
   const handleSubjectChange = (event) => {
@@ -49,14 +33,17 @@ export default function Home() {
     <>
       <Head>
         <title>Study Buddy</title>
-        <meta name="description" content="AI-powered education app for academic assistance." />
+        <meta
+          name="description"
+          content="AI-powered education app for academic assistance."
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
         <style jsx>{`
           /* Your custom CSS styles go here */
           body {
             margin: 0;
-            font-family: 'Arial', sans-serif;
+            font-family: "Arial", sans-serif;
             background-color: #f9f9f9;
           }
           .container {
@@ -114,7 +101,8 @@ export default function Home() {
             font-size: 1rem;
             outline: none;
             appearance: none;
-            background: url('/dropdown-arrow.svg') no-repeat right 0.75rem center;
+            background: url("/dropdown-arrow.svg") no-repeat right 0.75rem
+              center;
             background-size: 12px;
           }
           .submit-btn {
